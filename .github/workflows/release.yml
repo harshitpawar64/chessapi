@@ -1,0 +1,29 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: release-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  release-please:
+    uses: ./.github/workflows/release-please.yml
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+
+  pypi-publish:
+    needs: release-please
+    if: ${{ needs.release-please.outputs.release_created == 'true' }}
+    uses: ./.github/workflows/pypi-publish.yml
+    with:
+      tag_name: ${{ needs.release-please.outputs.tag_name }}
+    permissions:
+      id-token: write
+      contents: read
