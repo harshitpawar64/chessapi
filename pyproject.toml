@@ -1,0 +1,51 @@
+[project]
+name = "chessapi"
+version = "0.1.0"
+description = "Sync & Async Python client for Chess.com and Lichess APIs"
+readme = "README.md"
+authors = [{ name = "Harshit Pawar", email = "hpchess64@gmail.com" }]
+requires-python = ">=3.11"
+dependencies = [
+    "httpx>=0.28.1",
+    "msgspec>=0.21.1",
+]
+keywords = ["chess", "chess.com", "lichess", "api"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Games/Entertainment :: Board Games",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Utilities",
+    "Typing :: Typed",
+]
+
+[project.urls]
+Homepage = "https://github.com/harshitpawar64/chessapi"
+Repository = "https://github.com/harshitpawar64/chessapi"
+Issues = "https://github.com/harshitpawar64/chessapi/issues"
+Changelog = "https://github.com/harshitpawar64/chessapi/blob/main/CHANGELOG.md"
+
+[build-system]
+requires = ["uv_build>=0.12.15,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "ruff>=0.16.8",
+    "ty>=0.0.82",
+]
+
+[tool.ruff.format]
+skip-magic-trailing-comma = true
+
+[tool.ruff.lint]
+extend-select = ["I"]
+
+[tool.ruff.lint.isort]
+split-on-trailing-comma = false
