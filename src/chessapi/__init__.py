@@ -1,5 +1,6 @@
 __version__ = "0.0.0"  # x-release-please-version
 
+from chessapi.chesscom import AsyncChessComClient, ChessComClient
 from chessapi.exceptions import (
     APIResponseError,
     AuthenticationError,
@@ -17,9 +18,11 @@ from chessapi.exceptions import (
 
 __all__ = [
     "APIResponseError",
+    "AsyncChessComClient",
     "AuthenticationError",
     "BadRequestError",
     "ChessAPIError",
+    "ChessComClient",
     "DecodeError",
     "NetworkError",
     "NotFoundError",
