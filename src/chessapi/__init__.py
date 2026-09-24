@@ -1,3 +1,32 @@
 __version__ = "0.0.0"  # x-release-please-version
 
-__all__ = ["__version__"]
+from chessapi.exceptions import (
+    APIResponseError,
+    AuthenticationError,
+    BadRequestError,
+    ChessAPIError,
+    DecodeError,
+    NetworkError,
+    NotFoundError,
+    PermissionDeniedError,
+    RateLimitError,
+    ResourceGoneError,
+    ServerError,
+    TimeoutError,
+)
+
+__all__ = [
+    "APIResponseError",
+    "AuthenticationError",
+    "BadRequestError",
+    "ChessAPIError",
+    "DecodeError",
+    "NetworkError",
+    "NotFoundError",
+    "PermissionDeniedError",
+    "RateLimitError",
+    "ResourceGoneError",
+    "ServerError",
+    "TimeoutError",
+    "__version__",
+]
