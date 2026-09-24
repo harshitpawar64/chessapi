@@ -15,15 +15,18 @@ from chessapi.exceptions import (
     ServerError,
     TimeoutError,
 )
+from chessapi.lichess import AsyncLichessClient, LichessClient
 
 __all__ = [
     "APIResponseError",
     "AsyncChessComClient",
+    "AsyncLichessClient",
     "AuthenticationError",
     "BadRequestError",
     "ChessAPIError",
     "ChessComClient",
     "DecodeError",
+    "LichessClient",
     "NetworkError",
     "NotFoundError",
     "PermissionDeniedError",
