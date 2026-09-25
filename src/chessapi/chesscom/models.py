@@ -1,3 +1,5 @@
+from typing import Any
+
 import msgspec
 
 
@@ -25,3 +27,14 @@ class ChessComPlayer(msgspec.Struct, kw_only=True, frozen=True):
     verified: bool
     league: str | None = None
     streaming_platforms: list[StreamingPlatform] = []
+
+
+class ChessComPlayerStats(msgspec.Struct, kw_only=True, frozen=True):
+    chess_daily: dict[str, Any] = {}
+    chess960_daily: dict[str, Any] = {}
+    chess_rapid: dict[str, Any] = {}
+    chess_bullet: dict[str, Any] = {}
+    chess_blitz: dict[str, Any] = {}
+    fide: int | None = None
+    tactics: dict[str, Any] = {}
+    puzzle_rush: dict[str, Any] = {}

@@ -1,5 +1,5 @@
 from chessapi._core import AsyncBaseEndpoint, BaseEndpoint
-from chessapi.chesscom.models import ChessComPlayer
+from chessapi.chesscom.models import ChessComPlayer, ChessComPlayerStats
 
 
 class PlayersEndpoint(BaseEndpoint):
@@ -11,6 +11,11 @@ class PlayersEndpoint(BaseEndpoint):
             "GET", f"/player/{username}", response_model=ChessComPlayer
         )
 
+    def get_stats(self, username: str) -> ChessComPlayerStats:
+        return self._client.request(
+            "GET", f"/player/{username}/stats", response_model=ChessComPlayerStats
+        )
+
 
 class AsyncPlayersEndpoint(AsyncBaseEndpoint):
     """Asynchronous player endpoints."""
@@ -19,4 +24,9 @@ class AsyncPlayersEndpoint(AsyncBaseEndpoint):
         """Fetch player profile by username."""
         return await self._client.request(
             "GET", f"/player/{username}", response_model=ChessComPlayer
+        )
+
+    async def get_stats(self, username: str) -> ChessComPlayerStats:
+        return await self._client.request(
+            "GET", f"/player/{username}/stats", response_model=ChessComPlayerStats
         )
