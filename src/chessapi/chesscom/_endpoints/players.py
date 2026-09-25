@@ -16,6 +16,13 @@ class PlayersEndpoint(BaseEndpoint):
             "GET", f"/player/{username}/stats", response_model=ChessComPlayerStats
         )
 
+    def get_titled(self, title: str) -> list[str]:
+        data = self._client.request(
+            "GET", f"/titled/{title}", response_model=dict[str, list[str]]
+        )
+
+        return data.get("players", [])
+
 
 class AsyncPlayersEndpoint(AsyncBaseEndpoint):
     """Asynchronous player endpoints."""
@@ -30,3 +37,10 @@ class AsyncPlayersEndpoint(AsyncBaseEndpoint):
         return await self._client.request(
             "GET", f"/player/{username}/stats", response_model=ChessComPlayerStats
         )
+
+    async def get_titled(self, title: str) -> list[str]:
+        data = await self._client.request(
+            "GET", f"/titled/{title}", response_model=dict[str, list[str]]
+        )
+
+        return data.get("players", [])
