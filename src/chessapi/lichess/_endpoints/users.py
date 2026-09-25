@@ -1,5 +1,5 @@
 from chessapi._core import AsyncBaseEndpoint, BaseEndpoint
-from chessapi.lichess.models import LichessUser
+from chessapi.lichess.models import LichessUser, LichessUserStatus
 
 
 class UsersEndpoint(BaseEndpoint):
@@ -29,6 +29,24 @@ class UsersEndpoint(BaseEndpoint):
             response_model=list[LichessUser],
         )
 
+    def get_status(self, usernames: list[str]) -> list[LichessUserStatus]:
+        if not usernames:
+            return []
+
+        if len(usernames) > 100:
+            raise ValueError(
+                f"Cannot fetch more than 100 users per status request, got {len(usernames)}."
+            )
+
+        params = {"ids": ",".join(usernames), "withSignal": True, "withGameMetas": True}
+
+        return self._client.request(
+            "GET",
+            "/api/users/status",
+            params=params,
+            response_model=list[LichessUserStatus],
+        )
+
 
 class AsyncUsersEndpoint(AsyncBaseEndpoint):
     """Asynchronous user endpoints."""
@@ -55,4 +73,22 @@ class AsyncUsersEndpoint(AsyncBaseEndpoint):
             params=params,
             content=",".join(usernames),
             response_model=list[LichessUser],
+        )
+
+    async def get_status(self, usernames: list[str]) -> list[LichessUserStatus]:
+        if not usernames:
+            return []
+
+        if len(usernames) > 100:
+            raise ValueError(
+                f"Cannot fetch more than 100 users per status request, got {len(usernames)}."
+            )
+
+        params = {"ids": ",".join(usernames), "withSignal": True, "withGameMetas": True}
+
+        return await self._client.request(
+            "GET",
+            "/api/users/status",
+            params=params,
+            response_model=list[LichessUserStatus],
         )

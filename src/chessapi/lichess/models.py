@@ -55,3 +55,22 @@ class LichessUser(msgspec.Struct, rename="camel", kw_only=True, frozen=True):
     trophies: list[dict[str, Any]] = []
     fide_id: int | None = None
     streamer: dict[str, Any] = {}
+
+
+class PlayingGame(msgspec.Struct, kw_only=True, frozen=True):
+    id: str
+    clock: str | None = None
+    variant: str | None = None
+
+
+class LichessUserStatus(msgspec.Struct, rename="camel", kw_only=True, frozen=True):
+    name: str
+    title: str | None = None
+    flair: str | None = None
+    patron: bool = False
+    patron_color: int | None = None
+    id: str
+    online: bool = False
+    playing: PlayingGame | None = None
+    streaming: bool = False
+    signal: int | None = None
