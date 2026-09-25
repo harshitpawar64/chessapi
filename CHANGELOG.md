@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.2.0](https://github.com/harshitpawar64/chessapi/compare/v0.1.0...v0.2.0) (2026-09-25)
+
+
+### Features
+
+* **chesscom:** add player stats endpoints and model ([2862d17](https://github.com/harshitpawar64/chessapi/commit/2862d172bc1de322bfc1b3aab00fe0dac6b7a299))
+* **chesscom:** add titled player endpoints ([0b9ae6f](https://github.com/harshitpawar64/chessapi/commit/0b9ae6fef91836d1ed4e43193c99664acfe9f019))
+* **lichess:** add batch user endpoints ([d240a7e](https://github.com/harshitpawar64/chessapi/commit/d240a7ed3a3fa1d779f1c05738efc6017eddc0cf))
+* **lichess:** add user status endpoints and models ([f300ffe](https://github.com/harshitpawar64/chessapi/commit/f300ffe19f25e655383596035287e3b2a1621a9e))
+
 ## 0.1.0 (2026-09-24)
 
 
