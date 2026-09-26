@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.3.0](https://github.com/harshitpawar64/chessapi/compare/v0.2.0...v0.3.0) (2026-09-26)
+
+
+### Features
+
+* **chesscom:** add country endpoints and model ([8d3f7d9](https://github.com/harshitpawar64/chessapi/commit/8d3f7d9f5c16f34545cccc914a21e423ff53f507))
+* **chesscom:** add daily puzzle endpoints and model ([84c651c](https://github.com/harshitpawar64/chessapi/commit/84c651c6cc5e1a19c3e00356739a5051b29f40ca))
+* **chesscom:** add get_clubs to country endpoints ([42d7f74](https://github.com/harshitpawar64/chessapi/commit/42d7f745a7d1426eeebee33e2f55765b915b0400))
+* **chesscom:** add get_players to country endpoints ([a90c0cc](https://github.com/harshitpawar64/chessapi/commit/a90c0ccdcb74715b33f2a1d3dccfe84fa2e401b3))
+* **chesscom:** add get_random to puzzle endpoints ([c7b2505](https://github.com/harshitpawar64/chessapi/commit/c7b25054d817a0b3b243eac3b756225457080af1))
+
 ## [0.2.0](https://github.com/harshitpawar64/chessapi/compare/v0.1.0...v0.2.0) (2026-09-25)
 
 
