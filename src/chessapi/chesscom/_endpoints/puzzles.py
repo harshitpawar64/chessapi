@@ -8,6 +8,11 @@ class PuzzlesEndpoint(BaseEndpoint):
     def get_daily(self) -> ChessComPuzzle:
         return self._client.request("GET", "/puzzle", response_model=ChessComPuzzle)
 
+    def get_random(self) -> ChessComPuzzle:
+        return self._client.request(
+            "GET", "/puzzle/random", response_model=ChessComPuzzle
+        )
+
 
 class AsyncPuzzlesEndpoint(AsyncBaseEndpoint):
     """Asynchronous puzzles endpoints."""
@@ -15,4 +20,9 @@ class AsyncPuzzlesEndpoint(AsyncBaseEndpoint):
     async def get_daily(self) -> ChessComPuzzle:
         return await self._client.request(
             "GET", "/puzzle", response_model=ChessComPuzzle
+        )
+
+    async def get_random(self) -> ChessComPuzzle:
+        return await self._client.request(
+            "GET", "/puzzle/random", response_model=ChessComPuzzle
         )
