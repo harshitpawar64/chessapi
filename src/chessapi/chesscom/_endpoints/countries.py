@@ -19,6 +19,13 @@ class CountriesEndpoint(BaseEndpoint):
 
         return data.get("players", [])
 
+    def get_clubs(self, country_code: str) -> list[str]:
+        data = self._client.request(
+            "GET", f"/country/{country_code}/clubs", response_model=dict[str, Any]
+        )
+
+        return data.get("clubs", [])
+
 
 class AsyncCountriesEndpoint(AsyncBaseEndpoint):
     """Asynchronous country endpoints."""
@@ -34,3 +41,10 @@ class AsyncCountriesEndpoint(AsyncBaseEndpoint):
         )
 
         return data.get("players", [])
+
+    async def get_clubs(self, country_code: str) -> list[str]:
+        data = await self._client.request(
+            "GET", f"/country/{country_code}/clubs", response_model=dict[str, Any]
+        )
+
+        return data.get("clubs", [])
