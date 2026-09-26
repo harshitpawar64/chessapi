@@ -40,6 +40,15 @@ class ChessComPlayerStats(msgspec.Struct, kw_only=True, frozen=True):
     puzzle_rush: dict[str, Any] = {}
 
 
+class ChessComPuzzle(msgspec.Struct, kw_only=True, frozen=True):
+    title: str
+    url: str
+    publish_time: int
+    fen: str
+    pgn: str
+    image_url: str = msgspec.field(name="image")
+
+
 class ChessComCountry(msgspec.Struct, kw_only=True, frozen=True):
     api_url: str = msgspec.field(name="@id")
     code: str

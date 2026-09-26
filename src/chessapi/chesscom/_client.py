@@ -17,6 +17,10 @@ class ChessComClient(BaseClient):
     def countries(self) -> CountriesEndpoint:
         return CountriesEndpoint(self)
 
+    @property
+    def puzzles(self) -> PuzzlesEndpoint:
+        return PuzzlesEndpoint(self)
+
 
 class AsyncChessComClient(AsyncBaseClient):
     """Asynchronous client for Chess.com Published Data API."""
@@ -30,3 +34,7 @@ class AsyncChessComClient(AsyncBaseClient):
     @property
     def countries(self) -> AsyncCountriesEndpoint:
         return AsyncCountriesEndpoint(self)
+
+    @property
+    def puzzles(self) -> AsyncPuzzlesEndpoint:
+        return AsyncPuzzlesEndpoint(self)
