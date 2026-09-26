@@ -38,3 +38,9 @@ class ChessComPlayerStats(msgspec.Struct, kw_only=True, frozen=True):
     fide: int | None = None
     tactics: dict[str, Any] = {}
     puzzle_rush: dict[str, Any] = {}
+
+
+class ChessComCountry(msgspec.Struct, kw_only=True, frozen=True):
+    api_url: str = msgspec.field(name="@id")
+    code: str
+    name: str
