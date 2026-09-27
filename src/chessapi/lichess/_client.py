@@ -1,5 +1,5 @@
 from chessapi._core import AsyncBaseClient, BaseClient
-from chessapi.lichess._endpoints import AsyncUsersEndpoint, UsersEndpoint
+from chessapi.lichess._endpoints import *
 
 LICHESS_BASE_URL = "https://lichess.org"
 
@@ -13,6 +13,10 @@ class LichessClient(BaseClient):
     def users(self) -> UsersEndpoint:
         return UsersEndpoint(self)
 
+    @property
+    def puzzles(self) -> PuzzlesEndpoint:
+        return PuzzlesEndpoint(self)
+
 
 class AsyncLichessClient(AsyncBaseClient):
     """Asynchronous client for Lichess API."""
@@ -22,3 +26,7 @@ class AsyncLichessClient(AsyncBaseClient):
     @property
     def users(self) -> AsyncUsersEndpoint:
         return AsyncUsersEndpoint(self)
+
+    @property
+    def puzzles(self) -> AsyncPuzzlesEndpoint:
+        return AsyncPuzzlesEndpoint(self)

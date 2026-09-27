@@ -74,3 +74,28 @@ class LichessUserStatus(msgspec.Struct, rename="camel", kw_only=True, frozen=Tru
     playing: PlayingGame | None = None
     streaming: bool = False
     signal: int | None = None
+
+
+class PuzzleGame(msgspec.Struct, kw_only=True, frozen=True):
+    id: str
+    perf: dict[str, str] = {}
+    rated: bool
+    players: list[dict[str, Any]] = []
+    pgn: str
+    clock: str
+
+
+class PuzzleInfo(msgspec.Struct, rename="camel", kw_only=True, frozen=True):
+    id: str
+    rating: int
+    plays: int
+    solution: list[str] = []
+    themes: list[str] = []
+    fen: str
+    last_move: str
+    initial_ply: int
+
+
+class LichessPuzzle(msgspec.Struct, kw_only=True, frozen=True):
+    game: PuzzleGame
+    puzzle: PuzzleInfo
