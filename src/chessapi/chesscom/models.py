@@ -53,3 +53,21 @@ class ChessComCountry(msgspec.Struct, kw_only=True, frozen=True):
     api_url: str = msgspec.field(name="@id")
     code: str
     name: str
+
+
+class StreamerPlatform(msgspec.Struct, kw_only=True, frozen=True):
+    type: str
+    stream_url: str | None = None
+    channel_url: str
+    is_live: bool
+    is_main_live_platform: bool = False
+
+
+class ChessComStreamer(msgspec.Struct, kw_only=True, frozen=True):
+    username: str
+    avatar: str | None = None
+    twitch_url: str | None = None
+    url: str
+    is_live: bool
+    is_community_streamer: bool
+    platforms: list[StreamerPlatform] = []
