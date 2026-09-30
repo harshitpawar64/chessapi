@@ -1,5 +1,25 @@
 # Changelog
 
+## [0.4.0](https://github.com/harshitpawar64/chessapi/compare/v0.3.0...v0.4.0) (2026-09-30)
+
+
+### Features
+
+* **chesscom:** add get_streamers to player endpoints ([405f963](https://github.com/harshitpawar64/chessapi/commit/405f963d14bcb94788396f20d3b7bf71f381aba2))
+* **lichess:** add get_daily to puzzle endpoints ([c62ade0](https://github.com/harshitpawar64/chessapi/commit/c62ade03b572cfac8b6bcff032b06eacc1b18b2a))
+* **lichess:** add get_live_streamers to user endpoints ([7344f8c](https://github.com/harshitpawar64/chessapi/commit/7344f8c3b0a29549ee1e7d2f85dc5906fd908db6))
+* **lichess:** add puzzle endpoints and models ([88aa50a](https://github.com/harshitpawar64/chessapi/commit/88aa50aff43e06497db2a0da9e86f13a62eb5caa))
+
+
+### Refactor
+
+* add http2 support and use cached_property for client endpoints ([76fed2a](https://github.com/harshitpawar64/chessapi/commit/76fed2a91783ddb79c499952a5256b6028ba2f4d))
+
+
+### Documentation
+
+* **readme:** update README with badges and installation instructions ([4ef0e82](https://github.com/harshitpawar64/chessapi/commit/4ef0e82079425502e563905a39978005b6ab1873))
+
 ## [0.3.0](https://github.com/harshitpawar64/chessapi/compare/v0.2.0...v0.3.0) (2026-09-26)
 
 
