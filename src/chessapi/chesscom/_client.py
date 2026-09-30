@@ -1,3 +1,5 @@
+from functools import cached_property
+
 from chessapi._core import AsyncBaseClient, BaseClient
 from chessapi.chesscom._endpoints import *
 
@@ -9,15 +11,15 @@ class ChessComClient(BaseClient):
 
     BASE_URL = CHESSCOM_BASE_URL
 
-    @property
+    @cached_property
     def players(self) -> PlayersEndpoint:
         return PlayersEndpoint(self)
 
-    @property
+    @cached_property
     def countries(self) -> CountriesEndpoint:
         return CountriesEndpoint(self)
 
-    @property
+    @cached_property
     def puzzles(self) -> PuzzlesEndpoint:
         return PuzzlesEndpoint(self)
 
@@ -27,14 +29,14 @@ class AsyncChessComClient(AsyncBaseClient):
 
     BASE_URL = CHESSCOM_BASE_URL
 
-    @property
+    @cached_property
     def players(self) -> AsyncPlayersEndpoint:
         return AsyncPlayersEndpoint(self)
 
-    @property
+    @cached_property
     def countries(self) -> AsyncCountriesEndpoint:
         return AsyncCountriesEndpoint(self)
 
-    @property
+    @cached_property
     def puzzles(self) -> AsyncPuzzlesEndpoint:
         return AsyncPuzzlesEndpoint(self)

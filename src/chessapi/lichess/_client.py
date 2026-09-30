@@ -1,3 +1,5 @@
+from functools import cached_property
+
 from chessapi._core import AsyncBaseClient, BaseClient
 from chessapi.lichess._endpoints import *
 
@@ -9,11 +11,11 @@ class LichessClient(BaseClient):
 
     BASE_URL = LICHESS_BASE_URL
 
-    @property
+    @cached_property
     def users(self) -> UsersEndpoint:
         return UsersEndpoint(self)
 
-    @property
+    @cached_property
     def puzzles(self) -> PuzzlesEndpoint:
         return PuzzlesEndpoint(self)
 
@@ -23,10 +25,10 @@ class AsyncLichessClient(AsyncBaseClient):
 
     BASE_URL = LICHESS_BASE_URL
 
-    @property
+    @cached_property
     def users(self) -> AsyncUsersEndpoint:
         return AsyncUsersEndpoint(self)
 
-    @property
+    @cached_property
     def puzzles(self) -> AsyncPuzzlesEndpoint:
         return AsyncPuzzlesEndpoint(self)

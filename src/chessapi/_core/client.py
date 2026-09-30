@@ -86,16 +86,21 @@ class BaseClient:
 
     def __init__(
         self,
+        *,
         user_agent: str | None = None,
-        headers: dict[str, str] | None = None,
-        timeout: float = 10.0,
+        headers: Mapping[str, str] | None = None,
+        timeout: float | httpx.Timeout = 10.0,
+        http2: bool = False,
     ) -> None:
-        headers = {"User-Agent": user_agent or DEFAULT_USER_AGENT, **(headers or {})}
+        headers = httpx.Headers(
+            headers={"User-Agent": user_agent or DEFAULT_USER_AGENT, **(headers or {})}
+        )
 
         self._client = httpx.Client(
             base_url=self.BASE_URL,
             headers=headers,
             timeout=timeout,
+            http2=http2,
             follow_redirects=True,
         )
 
@@ -172,15 +177,21 @@ class AsyncBaseClient:
 
     def __init__(
         self,
+        *,
         user_agent: str | None = None,
-        headers: dict[str, str] | None = None,
-        timeout: float = 10.0,
+        headers: Mapping[str, str] | None = None,
+        timeout: float | httpx.Timeout = 10.0,
+        http2: bool = False,
     ) -> None:
-        headers = {"User-Agent": user_agent or DEFAULT_USER_AGENT, **(headers or {})}
+        headers = httpx.Headers(
+            headers={"User-Agent": user_agent or DEFAULT_USER_AGENT, **(headers or {})}
+        )
+
         self._client = httpx.AsyncClient(
             base_url=self.BASE_URL,
             headers=headers,
             timeout=timeout,
+            http2=http2,
             follow_redirects=True,
         )
 
