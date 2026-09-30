@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, Literal
 
 import msgspec
 
@@ -99,3 +99,29 @@ class PuzzleInfo(msgspec.Struct, rename="camel", kw_only=True, frozen=True):
 class LichessPuzzle(msgspec.Struct, kw_only=True, frozen=True):
     game: PuzzleGame
     puzzle: PuzzleInfo
+
+
+class LiveStream(msgspec.Struct, kw_only=True, frozen=True):
+    service: Literal["twitch", "youtube"]
+    status: str | None = None
+    lang: str | None = None
+
+
+class StreamerProfile(msgspec.Struct, kw_only=True, frozen=True):
+    name: str
+    headline: str | None = None
+    description: str | None = None
+    twitch: str | None = None
+    youtube: str | None = None
+    image: str | None = None
+
+
+class LichessStreamer(msgspec.Struct, rename="camel", kw_only=True, frozen=True):
+    name: str
+    title: str | None = None
+    flair: str | None = None
+    patron: bool = False
+    patron_color: int | None = None
+    id: str
+    stream: LiveStream
+    streamer: StreamerProfile

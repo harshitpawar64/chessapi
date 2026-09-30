@@ -1,5 +1,5 @@
 from chessapi._core import AsyncBaseEndpoint, BaseEndpoint
-from chessapi.lichess.models import LichessUser, LichessUserStatus
+from chessapi.lichess.models import LichessStreamer, LichessUser, LichessUserStatus
 
 
 class UsersEndpoint(BaseEndpoint):
@@ -47,6 +47,11 @@ class UsersEndpoint(BaseEndpoint):
             response_model=list[LichessUserStatus],
         )
 
+    def get_live_streamers(self) -> list[LichessStreamer]:
+        return self._client.request(
+            "GET", "/api/streamer/live", response_model=list[LichessStreamer]
+        )
+
 
 class AsyncUsersEndpoint(AsyncBaseEndpoint):
     """Asynchronous user endpoints."""
@@ -91,4 +96,9 @@ class AsyncUsersEndpoint(AsyncBaseEndpoint):
             "/api/users/status",
             params=params,
             response_model=list[LichessUserStatus],
+        )
+
+    async def get_live_streamers(self) -> list[LichessStreamer]:
+        return await self._client.request(
+            "GET", "/api/streamer/live", response_model=list[LichessStreamer]
         )
