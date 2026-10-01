@@ -1,5 +1,6 @@
 from chessapi._core import AsyncBaseEndpoint, BaseEndpoint
 from chessapi.chesscom.models import (
+    ChessComDailyGame,
     ChessComPlayer,
     ChessComPlayerStats,
     ChessComStreamer,
@@ -34,6 +35,15 @@ class PlayersEndpoint(BaseEndpoint):
 
         return data.get("streamers", [])
 
+    def get_daily_games(self, username: str) -> list[ChessComDailyGame]:
+        data = self._client.request(
+            "GET",
+            f"/player/{username}/games",
+            response_model=dict[str, list[ChessComDailyGame]],
+        )
+
+        return data.get("games", [])
+
 
 class AsyncPlayersEndpoint(AsyncBaseEndpoint):
     """Asynchronous player endpoints."""
@@ -62,3 +72,12 @@ class AsyncPlayersEndpoint(AsyncBaseEndpoint):
         )
 
         return data.get("streamers", [])
+
+    async def get_daily_games(self, username: str) -> list[ChessComDailyGame]:
+        data = await self._client.request(
+            "GET",
+            f"/player/{username}/games",
+            response_model=dict[str, list[ChessComDailyGame]],
+        )
+
+        return data.get("games", [])

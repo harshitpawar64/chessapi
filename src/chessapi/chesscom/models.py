@@ -71,3 +71,22 @@ class ChessComStreamer(msgspec.Struct, kw_only=True, frozen=True):
     is_live: bool
     is_community_streamer: bool
     platforms: list[StreamerPlatform] = []
+
+
+class ChessComDailyGame(msgspec.Struct, kw_only=True, frozen=True):
+    url: str
+    move_by: int
+    pgn: str
+    time_control: str
+    last_activity: int
+    draw_offer: str | None = None
+    rated: bool
+    turn: str
+    fen: str
+    start_time: int
+    time_class: str
+    rules: str
+    white: str
+    black: str
+    match: str | None = None
+    tournament: str | None = None
