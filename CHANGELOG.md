@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.5.0](https://github.com/harshitpawar64/chessapi/compare/v0.4.0...v0.5.0) (2026-10-04)
+
+
+### Features
+
+* **chesscom:** add get_daily_games to player endpoints ([29c489d](https://github.com/harshitpawar64/chessapi/commit/29c489d9e88c37294f87e8373b9749a97d8e660e))
+* **lichess:** add token authentication to clients ([dfbf37d](https://github.com/harshitpawar64/chessapi/commit/dfbf37d54d71cc6bc00829fca37e736238a74797))
+
 ## [0.4.0](https://github.com/harshitpawar64/chessapi/compare/v0.3.0...v0.4.0) (2026-09-30)
 
 
