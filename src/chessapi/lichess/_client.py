@@ -11,6 +11,20 @@ class LichessClient(BaseClient):
 
     BASE_URL = LICHESS_BASE_URL
 
+    def __init__(
+        self,
+        token: str | None = None,
+        *,
+        headers: dict[str, str] | None = None,
+        **kwargs,
+    ):
+        headers = (
+            {"Authorization": f"Bearer {token}", **(headers or {})}
+            if token
+            else headers
+        )
+        super().__init__(headers=headers, **kwargs)
+
     @cached_property
     def users(self) -> UsersEndpoint:
         return UsersEndpoint(self)
@@ -24,6 +38,20 @@ class AsyncLichessClient(AsyncBaseClient):
     """Asynchronous client for Lichess API."""
 
     BASE_URL = LICHESS_BASE_URL
+
+    def __init__(
+        self,
+        token: str | None = None,
+        *,
+        headers: dict[str, str] | None = None,
+        **kwargs,
+    ):
+        headers = (
+            {"Authorization": f"Bearer {token}", **(headers or {})}
+            if token
+            else headers
+        )
+        super().__init__(headers=headers, **kwargs)
 
     @cached_property
     def users(self) -> AsyncUsersEndpoint:
